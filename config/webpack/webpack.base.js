@@ -9,6 +9,10 @@ module.exports = {
 
   context: resolve(__dirname, '../../'), 
 
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+
   entry: {
     app: [
       'normalize.css',
@@ -58,21 +62,9 @@ module.exports = {
         include: [root('/node_modules/antd'),]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: '[name].[hash:7].[ext]'
-        }
+        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: ['happypack/loader?id=pic']
       },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000,
-          name: '[name].[hash:7].[ext]'
-        }
-      }
     ]
   },
 
@@ -108,11 +100,19 @@ module.exports = {
     new HappyPack({
       id: 'antd',
       loaders: ['style-loader', 'postcss-loader']
-    })
+    }),
+    new HappyPack({
+      id: 'pic',
+      loaders: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: '[name].[hash:7].[ext]'
+          }
+        }
+      ]
+    }),
   ],
-
-  watchOptions: {
-    ignored: /node_modules/,
-  }
 
 };

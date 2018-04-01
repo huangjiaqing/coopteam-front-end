@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Avatar } from 'antd';
 
 class App extends React.Component {
 
@@ -13,6 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <Button type="primary">点击获取快乐</Button>
+        <Avatar icon="user"/>
       </div>
     );
   }
