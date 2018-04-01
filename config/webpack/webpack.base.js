@@ -32,7 +32,6 @@ module.exports = {
       {
         test: /\.js$/,
         include: [root('app'), root('test')],
-        // use: ['babel-loader?cacheDirectory']
         use: ['happypack/loader?id=babel']
       },
       {
@@ -42,30 +41,11 @@ module.exports = {
           root('node_modules/normalize.css')
         ],
         use: ['happypack/loader?id=css'],
-        // use: [
-        //   'style-loader',
-        //   {
-        //     loader: 'css-loader',
-        //     options: {
-        //       namedExport: true,
-        //       sourceMap: true,
-        //       importLoaders: 1,
-        //       module: true,
-        //       camelCase: true,
-        //       localIdentName: '[name]__[local]-[hash:base64:5]',
-        //       less: true
-        //     }
-        //   },
-        //   'postcss-loader'
-        // ]
       },
-      // 不要对antd使用css模块化
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'postcss-loader',
-        ],
+        use: ['happypack/loader?id=antd'],
+        // 不要对antd使用css模块化
         include: [root('/node_modules/antd'),]
       },
       {
@@ -116,6 +96,10 @@ module.exports = {
         'postcss-loader'
       ]
     }),
+    new HappyPack({
+      id: 'antd',
+      loaders: ['style-loader', 'postcss-loader']
+    })
   ],
 
   watchOptions: {
