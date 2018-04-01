@@ -4,13 +4,15 @@
     "commonjs": true,
     "es6": true
   },
+  "parser": "babel-eslint",
   "extends": "eslint:recommended",
   "parserOptions": {
       "ecmaFeatures": {
         "experimentalObjectRestSpread": true,
         "jsx": true
       },
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaVersion": 7
     },
     "plugins": [
       "react"

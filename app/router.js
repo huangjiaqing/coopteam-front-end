@@ -5,16 +5,21 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { Button } from 'antd';
 
-const App = () => {
+@withRouter
+class App extends React.Component {
 
-  return (
-    <div>
-      <Button type="primary">按钮</Button>
-    </div>
-  );
-};
+  render() {
+
+    return (
+      <div>
+        <Button type="primary">按钮</Button>
+      </div>
+    );
+  }
+}
 
 const Router = () => (
   <BrowserRouter>
