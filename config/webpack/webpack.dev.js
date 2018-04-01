@@ -1,6 +1,6 @@
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base')
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base');
 
 module.exports = webpackMerge(baseWebpackConfig, {
 
@@ -13,9 +13,9 @@ module.exports = webpackMerge(baseWebpackConfig, {
     hot: true,
   },
 
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ]
-})
+});

@@ -8,11 +8,10 @@ import {
 import { Button } from 'antd';
 
 const App = () => {
-  // console.log('环境: ', process.env.NODE_ENV);
 
   return (
     <div>
-      <Button type="primary">我庆哥哥的</Button>
+      <Button type="primary">按钮</Button>
     </div>
   );
 };

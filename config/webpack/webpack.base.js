@@ -1,13 +1,13 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HappyPack = require('happypack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HappyPack = require('happypack');
 const resolve = require('path').resolve;
 
 const root = (dir='') => resolve(__dirname, `../../${dir}`);
 
 module.exports = {
 
-  context: resolve(__dirname, '../../'),
+  context: resolve(__dirname, '../../'), 
 
   entry: {
     app: [
@@ -73,7 +73,7 @@ module.exports = {
       template: resolve(__dirname, '../template/index.html'),
       inject: true
     }),
-		new HappyPack({
+    new HappyPack({
       id: 'babel',
       loaders: ['babel-loader?cacheDirectory']
     }),
@@ -106,4 +106,4 @@ module.exports = {
     ignored: /node_modules/,
   }
 
-}
+};
