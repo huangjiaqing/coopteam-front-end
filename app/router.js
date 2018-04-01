@@ -5,17 +5,14 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import { Button } from 'antd';
 
-@withRouter
 class App extends React.Component {
 
   render() {
-
     return (
       <div>
-        <Button type="primary">按钮</Button>
+        <Button type="primary">点击获取快乐</Button>
       </div>
     );
   }

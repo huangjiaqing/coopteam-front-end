@@ -25,6 +25,15 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.json'],
+    alias: {
+      components: root('app/components'),
+      constants: root('app/constants'),
+      services: root('app/services'),
+      assets: root('app/assets'),
+      routes: root('app/routes'),
+      store: root('app/store'),
+      utils: root('app/utils'),
+    },
   },
 
   module: {
