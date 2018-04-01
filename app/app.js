@@ -1,18 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'antd';
+import Router from './router';
+import { AppContainer } from 'react-hot-loader';
 
-const App = () => {
-  console.log('环境: ', process.env.NODE_ENV);
+function render(Component) {
+  if (process.env.NODE_ENV === 'development') {
+    ReactDOM.render(
+      <AppContainer>
+        <Component />
+      </AppContainer>,
+      window.document.getElementById('root')
+    );
+  } else {
+    ReactDOM.render(
+      <Component />,
+      window.document.getElementById('root')
+    );
+  }
+}
 
-  return (
-    <div>
-      <Button type="primary">我是黄嘉庆哦</Button>
-    </div>
-  );
-};
+render(Router)
 
-ReactDOM.render(
-  <App />,
-  window.document.getElementById('root')
-);
+if (module.hot) {
+  module.hot.accept(['./router'], () => {
+    const next = require('./router').default
+    render(next)
+  })
+}
