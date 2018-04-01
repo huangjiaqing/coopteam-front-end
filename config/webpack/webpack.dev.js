@@ -16,6 +16,6 @@ module.exports = webpackMerge(baseWebpackConfig, {
   devtool: "cheap-module-eval-source-map",
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ]
 })

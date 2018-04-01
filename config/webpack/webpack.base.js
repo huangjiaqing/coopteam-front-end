@@ -28,6 +28,8 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
+        include: [root('app'), root('test')],
         use: ['babel-loader']
       },
       {
@@ -48,6 +50,22 @@ module.exports = {
           },
           'postcss-loader'
       ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: '[name].[hash:7].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: '[name].[hash:7].[ext]'
+        }
       }
     ]
   },
