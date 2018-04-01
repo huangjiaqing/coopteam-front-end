@@ -29,6 +29,25 @@ module.exports = {
       {
         test: /\.js$/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              namedExport: true,
+              sourceMap: true,
+              importLoaders: 1,
+              module: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]-[hash:base64:5]',
+              less: true
+            }
+          },
+          'postcss-loader'
+      ]
       }
     ]
   },
