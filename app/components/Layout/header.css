@@ -31,6 +31,13 @@
 
 .search {
   flex: 1;
+  padding: 0 1rem;
+}
+
+.addTask {
+  font-size: 1.6rem;
+  margin-left: 1rem;
+  color: #1890ff;
 }
 
 .me {

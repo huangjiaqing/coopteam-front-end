@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './header.css';
 import OrgSelect from 'components/OrgSelect';
 import className from 'classnames';
-import { Layout, Icon, Avatar } from 'antd';
+import { Layout, Icon, Avatar, Input } from 'antd';
 
 const { Header } = Layout;
+const { Search } = Input;
 
 export default function () {
 
@@ -30,6 +31,12 @@ export default function () {
           </h2>
         </div>
         <section className={styles.search}>
+          <Search
+            placeholder="在个人项目中搜索"
+            onSearch={value => console.log(value)}
+            style={{ width: 240 }}
+          />
+          <Icon type="plus-circle" className={styles.addTask}/>
         </section>
         <section className={styles.me}>
           <Avatar
