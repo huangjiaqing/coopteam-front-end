@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './index.css';
-import Layout from 'components/layout';
 import OrgItem from './OrgItem';
 
 export default class Org extends Component {
@@ -29,48 +28,46 @@ export default class Org extends Component {
     const data = this.state.data;
 
     return (
-      <Layout>
-        <div className={styles.org}>
-          <div className={styles.center}>
-            <section>
-              <h2>星标项目</h2>
-              <div className={styles.projGroup}>
-                {data.stared.map((item, idx) => (
-                  <OrgItem
-                    key={idx}
-                    name={item.name}
-                    stared={item.stared}
-                  />
-                ))}
-              </div>
-            </section>
-            <section>
-              <h2>企业项目</h2>
-              <div className={styles.projGroup}>
-                {data.orgs.map((item, idx) => (
-                  <OrgItem
-                    key={idx}
-                    name={item.name}
-                    stared={item.stared}
-                  />
-                ))}
-              </div>
-            </section>
-            <section>
-              <h2>项目回收站</h2>
-              <div className={styles.projGroup}>
-                {data.bin.map((item, idx) => (
-                  <OrgItem
-                    key={idx}
-                    name={item.name}
-                    stared={item.stared}
-                  />
-                ))}
-              </div>
-            </section>
-          </div>
+      <div className={styles.org}>
+        <div className={styles.center}>
+          <section>
+            <h2>星标项目</h2>
+            <div className={styles.projGroup}>
+              {data.stared.map((item, idx) => (
+                <OrgItem
+                  key={idx}
+                  name={item.name}
+                  stared={item.stared}
+                />
+              ))}
+            </div>
+          </section>
+          <section>
+            <h2>企业项目</h2>
+            <div className={styles.projGroup}>
+              {data.orgs.map((item, idx) => (
+                <OrgItem
+                  key={idx}
+                  name={item.name}
+                  stared={item.stared}
+                />
+              ))}
+            </div>
+          </section>
+          <section>
+            <h2>项目回收站</h2>
+            <div className={styles.projGroup}>
+              {data.bin.map((item, idx) => (
+                <OrgItem
+                  key={idx}
+                  name={item.name}
+                  stared={item.stared}
+                />
+              ))}
+            </div>
+          </section>
         </div>
-      </Layout>
+      </div>
     );
   }
 }

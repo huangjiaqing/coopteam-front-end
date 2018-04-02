@@ -5,13 +5,27 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import Layout from 'components/layout';
 import Org from 'routes/org';
+import Project from 'routes/project';
+
+const App = () => {
+
+  return (
+    <Layout>
+      <Switch>
+        <Route path='/org' component={Org}/>
+        <Route exact path='/project' component={Project}/>
+        <Redirect path='/' to='/org'/>
+      </Switch>
+    </Layout>
+  );
+};
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={Org}/>
-      <Redirect path='/' to='/org'/>
+      <Route path='/' component={App}/>
     </Switch>
   </BrowserRouter>
 );
