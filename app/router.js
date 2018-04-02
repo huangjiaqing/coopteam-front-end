@@ -5,12 +5,12 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Layout from 'components/Layout';
+import Org from 'routes/org';
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={Layout}/>
+      <Route path='/' component={Org}/>
       <Redirect path='/' to='/org'/>
     </Switch>
   </BrowserRouter>

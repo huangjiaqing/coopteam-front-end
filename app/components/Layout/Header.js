@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './header.css';
-import OrgSelect from 'components/OrgSelect';
+import OrgSelect from 'components/orgSelect';
 import className from 'classnames';
 import { Layout, Icon, Avatar, Input } from 'antd';
 
@@ -15,7 +15,8 @@ export default function () {
         width: '100%',
         backgroundColor: '#fff',
         height: '48px',
-        boxShadow: '0 1px 3px 0 rgba(0,0,0,.15)'
+        boxShadow: '0 1px 3px 0 rgba(0,0,0,.15)',
+        padding: '0 1rem'
       }}
     >
       <div className={styles.header}>
