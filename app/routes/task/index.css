@@ -25,3 +25,83 @@
     color: var(--text-color);
   }
 }
+
+.taskMainInfo {
+  margin-bottom: 1.5rem;
+
+  & > .content {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    & > .text {
+      flex: 1;
+      margin-left: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+  }
+
+  & > .info {
+    display: flex;
+    align-items: center;
+
+    & > .executor {
+      display: flex;
+      align-items: center;
+
+      & > span:last-child {
+        margin-left: 0.6rem;
+      }
+    }
+
+    & > .time {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.involve {
+
+  & > h2 {
+    color: gray;
+  }
+
+  & > .list {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    & > span {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.publish {
+  background-color: #fff;
+
+  & > section {
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  & > section:first-child {
+    border-bottom: 1px solid #eee;
+  }
+
+  & > .btn {
+    display: flex;
+    align-items: center;
+    padding: 0 0.3rem;
+
+    & > .action {
+      flex: 1;
+      text-align: left;
+      padding: 0 1rem;
+      display: flex;
+      align-item: center;
+    }
+  }
+}

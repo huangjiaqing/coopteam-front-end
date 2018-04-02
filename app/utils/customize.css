@@ -26,10 +26,6 @@
   cursor: pointer;
 }
 
-:global(.ant-popover-inner-content) {
-  padding: 0 !important;
-}
-
 :global(*::-webkit-scrollbar) {
   width: 8px;
   height: 8px;
@@ -43,4 +39,24 @@
 :global(*::-webkit-scrollbar-thumb) {
   height: 20px;
   background-color: #a6a6a6;
+}
+
+/* antd */
+:global .ant-modal-header {
+  border-bottom: none !important;
+}
+
+:global .ant-modal-footer {
+  border-top: none !important;
+  padding: 16px !important;
+  background-color: #e5e5e5;
+}
+
+:global .ant-popover-inner-content {
+  padding: 0 !important;
+}
+
+:global .ant-mention-editor {
+  border: none !important;
+  border-radius: 0 !important;
 }

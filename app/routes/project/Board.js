@@ -7,13 +7,34 @@ import Task from './Task';
 
 export default class Board extends Component {
 
+  state = {
+    isOpenTaskDetail: false
+  }
+
+  openTaskDetail = () => {
+    console.log('点击我啦')
+    this.setState({
+      isOpenTaskDetail: true
+    });
+  }
+
+  closeTaskDetail = () => {
+    this.setState({
+      isOpenTaskDetail: false
+    });
+  }
+
   render() {
+    const { isOpenTaskDetail } = this.state;
 
     return (
       <div className={styles.board}>
         <Scrum>
           <Stage stageName="待处理">
-            <Task data={{ content: '北控清洁能源项目对接' }}/>
+            <Task
+              data={{ content: '北控清洁能源项目对接' }}
+              openTaskDetail={this.openTaskDetail}
+            />
           </Stage>
           <Stage stageName="进行中" />
           <Stage stageName="测试中" />
@@ -22,7 +43,16 @@ export default class Board extends Component {
           <Stage stageName="已完成" />
           <Stage create />
         </Scrum>
-        <TaskDetail />
+        {
+          isOpenTaskDetail
+            ? (
+              <TaskDetail
+                visible={true}
+                closeTaskDetail={this.closeTaskDetail}
+              />
+            )
+            : ''
+        }
       </div>
     );
   }
