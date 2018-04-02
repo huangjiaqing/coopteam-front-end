@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
 import styles from './index.css';
 import Layout from 'components/layout';
-import className from 'classnames';
-import { Link } from 'react-router-dom';
-import { Icon } from 'antd';
+import OrgItem from './OrgItem';
 
 export default class Org extends Component {
 
-  edit = (e) => {
-    e.preventDefault();
-    console.log('点击了编辑');
-  }
-
-  star = (e) => {
-    e.preventDefault();
-    console.log('点击了star');
+  state = {
+    data: {
+      stared: [
+        { name: '立白悦协作', stared: true },
+        { name: '北控项目面板', straed: true },
+      ],
+      orgs: [
+        { name: '立白悦协作', stared: true },
+        { name: '北控项目面板', straed: true },
+        { name: '固定资产' },
+        { name: '黄嘉庆的项目' },
+        { name: '天明的项目' },
+        { name: '梁爽的项目' },
+      ],
+      bin: [
+        { name: '大招科技' }
+      ]
+    }
   }
 
   render() {
+    const data = this.state.data;
+
     return (
       <Layout>
         <div className={styles.org}>
@@ -25,53 +35,42 @@ export default class Org extends Component {
             <section>
               <h2>星标项目</h2>
               <div className={styles.projGroup}>
-                {this.renderOrgItem({name: '立白悦协作', stared: true})}
-                {this.renderOrgItem({name: '北控项目面板', stared: true})}
+                {data.stared.map((item, idx) => (
+                  <OrgItem
+                    key={idx}
+                    name={item.name}
+                    stared={item.stared}
+                  />
+                ))}
               </div>
             </section>
             <section>
               <h2>企业项目</h2>
               <div className={styles.projGroup}>
-                {this.renderOrgItem({name: '立白悦协作', stared: true})}
-                {this.renderOrgItem({name: '北控项目面板', stared: true})}
-                {this.renderOrgItem({name: '固定资产系统'})}
-                {this.renderOrgItem({name: '黄嘉庆的项目'})}
-                {this.renderOrgItem({name: '天明的项目'})}
-                {this.renderOrgItem({name: '梁爽的项目'})}
+                {data.orgs.map((item, idx) => (
+                  <OrgItem
+                    key={idx}
+                    name={item.name}
+                    stared={item.stared}
+                  />
+                ))}
               </div>
             </section>
             <section>
               <h2>项目回收站</h2>
               <div className={styles.projGroup}>
-                {this.renderOrgItem({name: '大招科技'})}
+                {data.bin.map((item, idx) => (
+                  <OrgItem
+                    key={idx}
+                    name={item.name}
+                    stared={item.stared}
+                  />
+                ))}
               </div>
             </section>
           </div>
         </div>
       </Layout>
-    );
-  }
-
-  renderOrgItem({ name, stared }) {
-
-    return (
-      <Link to="/project" className={styles.projItem}>
-        <div className={styles.projInfo}>
-          <h2>{name}</h2>
-          <div className={styles.action}>
-            <Icon
-              type="edit"
-              className={className(styles.projIcon, styles.iconEdit)}
-              onClick={this.edit}
-            />
-            <Icon
-              type="star"
-              className={className(styles.projIcon, styles.iconStar, stared ? styles.stared : '')}
-              onClick={this.star}            
-            />
-          </div>
-        </div>
-      </Link>
     );
   }
 }

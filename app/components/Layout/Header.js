@@ -16,7 +16,7 @@ export default function () {
         backgroundColor: '#fff',
         height: '48px',
         boxShadow: '0 1px 3px 0 rgba(0,0,0,.15)',
-        padding: '0 1rem'
+        padding: '0'
       }}
     >
       <div className={styles.header}>
