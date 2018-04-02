@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 export default function Main({ children }) {
 
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout style={{ height: '100vh', backgroundColor: '#f5f5f5' }}>
       <Header />
       <div className={styles.main}>
         {children}
