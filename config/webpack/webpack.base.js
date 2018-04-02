@@ -48,7 +48,7 @@ module.exports = {
         use: ['happypack/loader?id=babel']
       },
       {
-        test: /\.css$/,
+        test: /\.(css|pcss)$/,
         include: [
           root('app'),
           root('node_modules/normalize.css')
@@ -59,7 +59,7 @@ module.exports = {
         test: /\.css$/,
         use: ['happypack/loader?id=antd'],
         // 不要对antd使用css模块化
-        include: [root('/node_modules/antd'),]
+        include: [root('/node_modules/antd')],
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,

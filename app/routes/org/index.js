@@ -9,11 +9,11 @@ export default class Org extends Component {
     data: {
       stared: [
         { name: '立白悦协作', stared: true },
-        { name: '北控项目面板', straed: true },
+        { name: '北控项目面板', stared: true },
       ],
       orgs: [
         { name: '立白悦协作', stared: true },
-        { name: '北控项目面板', straed: true },
+        { name: '北控项目面板', stared: true },
         { name: '固定资产' },
         { name: '黄嘉庆的项目' },
         { name: '天明的项目' },
