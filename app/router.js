@@ -1,28 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter,
   Switch,
   Route,
   Redirect
 } from 'react-router-dom';
-import { Button, Avatar } from 'antd';
-
-class App extends React.Component {
-
-  render() {
-    return (
-      <div>
-        <Button type="primary">点击获取快乐</Button>
-        <Avatar icon="user"/>
-      </div>
-    );
-  }
-}
+import Layout from 'components/Layout';
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={App}/>
+      <Route path='/' component={Layout}/>
       <Redirect path='/' to='/org'/>
     </Switch>
   </BrowserRouter>
