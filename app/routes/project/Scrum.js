@@ -4,8 +4,8 @@ import styles from './scrum.css';
 export default function ({ children }) {
 
   return (
-    <div className={styles.scrum}>
+    <ul className={styles.scrum}>
       {children}
-    </div>
+    </ul>
   );
 }

@@ -1,0 +1,19 @@
+ul.customFields {
+  margin: 1.5rem 0;
+
+  & > .item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+
+    & > .left {
+      width: 24%;
+      color: #8c8c8c;
+    }
+
+    & > .right {
+      flex: 1;
+      color: gray;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TaskDetail from 'routes/task';
 import styles from './board.css';
 import Scrum from './Scrum';
 import Stage from './Stage';
@@ -21,6 +22,7 @@ export default class Board extends Component {
           <Stage stageName="已完成" />
           <Stage create />
         </Scrum>
+        <TaskDetail />
       </div>
     );
   }

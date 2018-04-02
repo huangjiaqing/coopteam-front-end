@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './task.css';
+import className from 'classnames';
 import { Avatar, Icon } from 'antd';
 
 export default function Task ({ data }) {
@@ -8,7 +9,7 @@ export default function Task ({ data }) {
 
   return (
     <div className={styles.task}>
-      <div className={styles.body}>
+      <div className={className(styles.body, 'can-click')}>
         <Icon type="minus-square-o" style={{ fontSize: 16, top: 2, position: 'relative' }}/>
         <section className={styles.taskInfo}>
           <h2 className={styles.content}>

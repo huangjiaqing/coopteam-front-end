@@ -6,7 +6,7 @@ import { Icon } from 'antd';
 export default function Stage({ stageName, create, children }) {
 
   return (
-    <div className={className(styles.stage, create ? styles.create : '')}>
+    <li className={className(styles.stage, create ? styles.create : '')}>
       {
         create
           ? (
@@ -30,6 +30,6 @@ export default function Stage({ stageName, create, children }) {
             </div>
           ]
       }
-    </div>
+    </li>
   );
 }
