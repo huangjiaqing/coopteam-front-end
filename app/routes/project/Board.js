@@ -12,7 +12,6 @@ export default class Board extends Component {
   }
 
   openTaskDetail = () => {
-    console.log('点击我啦')
     this.setState({
       isOpenTaskDetail: true
     });

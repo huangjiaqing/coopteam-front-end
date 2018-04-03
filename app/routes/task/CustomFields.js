@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './customFields.css';
+import Priority from 'components/priority';
 import { Icon } from 'antd';
 
 const FieldItem = ({iconType, fieldName, children}) => {
@@ -10,7 +11,7 @@ const FieldItem = ({iconType, fieldName, children}) => {
         <span>{fieldName}</span>
       </div>
       <div className={styles.right}>
-        暂无内容
+        {children}
       </div>
     </li>
   );
@@ -23,7 +24,9 @@ export default class CustomFields extends Component {
     return (
       <ul className={styles.customFields}>
         <FieldItem iconType="file-text" fieldName="备注"></FieldItem>
-        <FieldItem iconType="exclamation-circle-o" fieldName="优先级"></FieldItem>
+        <FieldItem iconType="exclamation-circle-o" fieldName="优先级">
+          <Priority getValue={() => 1}/>
+        </FieldItem>
         <FieldItem iconType="tag-o" fieldName="标签"></FieldItem>
       </ul>
     );

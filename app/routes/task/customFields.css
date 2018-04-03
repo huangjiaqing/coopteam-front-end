@@ -5,8 +5,8 @@ ul.customFields {
 
   & > .item {
     display: flex;
-    margin-bottom: 1.5rem;
     font-size: 1.1rem;
+    margin-bottom: 1.5rem;
 
     & > .left {
       width: 24%;

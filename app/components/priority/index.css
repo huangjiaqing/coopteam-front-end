@@ -1,0 +1,40 @@
+.priority {
+  width: 14rem;
+
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 222ms ease-in;
+    padding: 0.8rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+}
+
+.opt {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.common {
+  border-color: #a6a6a6;
+  color: #a6a6a6
+}
+
+.high {
+  border-color: #ffaf38;
+  color: #ffaf38;
+}
+
+.urgent {
+  border-color: #ff4f3e;
+  color: #ff4f3e;
+}

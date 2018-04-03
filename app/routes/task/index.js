@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
 import CustomFields from './CustomFields';
-import { Modal, Icon, Checkbox, Avatar, DatePicker, Mention, Button } from 'antd';
+import { Modal, Icon, Checkbox, Avatar, DatePicker, Button } from 'antd';
 
 const TaskMainInfo = () => (
   <div className={styles.taskMainInfo}>
@@ -36,9 +36,6 @@ const Involve = () => (
 
 const Publish = () => (
   <div className={styles.publish}>
-    <section>
-      <Mention placeholder="@提及他人，按Enter快速发布" style={{ textAlign: 'left' }}/>
-    </section>
     <section className={styles.btn}>
       <div className={styles.action}>
         <Icon type="upload" />

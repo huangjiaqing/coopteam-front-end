@@ -81,16 +81,6 @@
 .publish {
   background-color: #fff;
 
-  & > section {
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-  }
-
-  & > section:first-child {
-    border-bottom: 1px solid #eee;
-  }
-
   & > .btn {
     display: flex;
     align-items: center;

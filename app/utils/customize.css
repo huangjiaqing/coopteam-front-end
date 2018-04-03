@@ -42,21 +42,14 @@
 }
 
 /* antd */
-:global .ant-modal-header {
-  border-bottom: none !important;
-}
-
 :global .ant-modal-footer {
-  border-top: none !important;
-  padding: 16px !important;
-  background-color: #e5e5e5;
+  padding: 10px !important;
 }
 
 :global .ant-popover-inner-content {
   padding: 0 !important;
 }
 
-:global .ant-mention-editor {
-  border: none !important;
-  border-radius: 0 !important;
+:global .ant-popover-arrow {
+  display: none !important;
 }
