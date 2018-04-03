@@ -1,5 +1,5 @@
 .priority {
-  width: 14rem;
+  width: 18rem;
 
   & > li {
     display: flex;
@@ -17,7 +17,7 @@
 
 .opt {
   display: inline-block;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.6rem;
   border: 1px solid;
   border-radius: 0.2rem;
   font-size: 1rem;

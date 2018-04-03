@@ -25,7 +25,10 @@ export default class CustomFields extends Component {
       <ul className={styles.customFields}>
         <FieldItem iconType="file-text" fieldName="备注"></FieldItem>
         <FieldItem iconType="exclamation-circle-o" fieldName="优先级">
-          <Priority getValue={() => 1}/>
+          <Priority
+            getValue={() => 1}
+            btnStyle={{ position: 'relative', top: -2 }}
+          />
         </FieldItem>
         <FieldItem iconType="tag-o" fieldName="标签"></FieldItem>
       </ul>

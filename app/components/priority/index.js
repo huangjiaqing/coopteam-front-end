@@ -7,7 +7,8 @@ import { Popover, Icon } from 'antd';
 export default class Priority extends Component {
 
   static propTypes = {
-    getValue: PropTypes.func.isRequired
+    getValue: PropTypes.func.isRequired,
+    btnStyle: PropTypes.object
   }
 
   state = {
@@ -31,6 +32,7 @@ export default class Priority extends Component {
   render() {
     const { selected, isShowSelf } = this.state;
     const visible = isShowSelf ? {} : { visible: false };
+    const btnStyle = this.props.btnStyle || {};
 
     return (
       <Popover
@@ -39,21 +41,17 @@ export default class Priority extends Component {
         placement="bottom"
         content={this.renderContent()}
       >
-        {
-          selected === 0
+        <span style={btnStyle}>
+          {selected === 0
             ? <span className={className(styles.opt, styles.common)}>普通</span>
-            : ''
-        }
-        {
-          selected === 1
+            : ''}
+          {selected === 1
             ? <span className={className(styles.opt, styles.high)}>紧急</span>
-            : ''
-        }
-        {
-          selected === 2
+            : ''}
+          {selected === 2
             ? <span className={className(styles.opt, styles.urgent)}>非常紧急</span>
-            : ''
-        }
+            : ''}
+        </span>
       </Popover>
     );
   }
