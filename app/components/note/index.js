@@ -4,8 +4,6 @@ import className from 'classnames';
 import styles from './index.css';
 import { Tooltip, Input, Button } from 'antd';
 
-const TextArea = Input.TextArea;
-
 export default class Note extends Component {
 
   static propTypes = {
@@ -53,7 +51,7 @@ export default class Note extends Component {
       <div className={styles.note}>
         {isOpenNoteEditor
           ? [
-            <TextArea
+            <Input.TextArea
               key="input"
               rows={6}
               onChange={this.getNoteCache}
