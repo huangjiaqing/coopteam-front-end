@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './customFields.css';
 import Note from 'components/note';
 import Priority from 'components/priority';
+import AddTag from 'components/addTag';
 import { Icon } from 'antd';
 
 const FieldItem = ({iconType, fieldName, children}) => {
@@ -33,7 +34,9 @@ export default class CustomFields extends Component {
             btnStyle={{ position: 'relative', top: -2 }}
           />
         </FieldItem>
-        <FieldItem iconType="tag-o" fieldName="标签"></FieldItem>
+        <FieldItem iconType="tag-o" fieldName="标签">
+          <AddTag />
+        </FieldItem>
       </ul>
     );
   }

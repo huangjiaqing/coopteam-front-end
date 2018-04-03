@@ -22,13 +22,13 @@ export default class Note extends Component {
     });
   }
 
-  openNoteEditor = () => {
+  openNoteEditor = (e) => {
     this.setState({
       isOpenNoteEditor: true
     });
   }
 
-  closeNoteEditor = () => {
+  closeNoteEditor = (e) => {
     this.setState({
       isOpenNoteEditor: false
     });
@@ -61,7 +61,7 @@ export default class Note extends Component {
             <div className={styles.btn} key="action">
               <Button
                 style={{border: 'none'}}
-                onClick={() => this.closeNoteEditor()}
+                onClick={this.closeNoteEditor}
               >
                 取消
               </Button>&nbsp;&nbsp;
@@ -77,7 +77,7 @@ export default class Note extends Component {
             <Tooltip title="点击可编辑">
               <span
                 className={className(styles.add, 'can-click')}
-                onClick={() => this.openNoteEditor()}
+                onClick={this.openNoteEditor}
               >
                 {note.length ? note : '待添加'}
               </span>
