@@ -5,11 +5,11 @@
 ## 技术栈
 
 - react16
+- react-dnd
 - react-router4
+- antd
 - mobx4
 - webpack4
-
-..
 
 ## 开始
 
