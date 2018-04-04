@@ -37,6 +37,7 @@ module.exports = {
       routes: root('app/routes'),
       store: root('app/store'),
       utils: root('app/utils'),
+      mock: root('mock'),
     },
   },
 
