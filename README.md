@@ -4,10 +4,11 @@
 
 ## 技术栈
 
-- react16.3
+- react16
 - react-router4
 - mobx4
 - webpack4
+
 ..
 
 ## 开始
