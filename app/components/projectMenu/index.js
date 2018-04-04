@@ -16,7 +16,7 @@ export default class ProjectMenu extends Component {
     const { isOpenMenu, bodyStyle={} } = this.props;
     const bodyDisplay = isOpenMenu
       ? {
-        width: '31rem',
+        width: '30rem',
         transition: 'width 0.25s cubic-bezier(0,1,0.39,1)'
       }
       : {

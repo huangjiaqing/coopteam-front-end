@@ -2,6 +2,14 @@
 
 > 仿 Teambition & Worktile
 
+## 技术栈
+
+- react16.3
+- react-router4
+- mobx4
+- webpack4
+..
+
 ## 开始
 
 ```
