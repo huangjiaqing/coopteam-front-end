@@ -64,7 +64,7 @@
 
 .tagOpt {
   composes: vetically;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1rem;
   transition: background-color 222ms ease-in;
 
   & > .info {

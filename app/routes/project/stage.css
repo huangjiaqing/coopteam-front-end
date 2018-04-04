@@ -12,6 +12,10 @@
   /* padding: 0.8rem; */
   overflow-x: hidden;
   overflow-y: auto;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .create {

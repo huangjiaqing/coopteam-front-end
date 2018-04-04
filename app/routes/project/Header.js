@@ -3,7 +3,7 @@ import styles from './header.css';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
-const Header = () => (
+const Header = ({ onMenuClick }) => (
   <div className={styles.header}>
     <section className={styles.nav}>
       <Breadcrumb separator=">">
@@ -18,7 +18,7 @@ const Header = () => (
       </Breadcrumb>
     </section>
     <section className={styles.action}>
-      <li className="can-click">
+      <li className="can-click" onClick={onMenuClick}>
         <Icon type="menu-unfold" className={styles.actionIcon}/>
         <span>菜单</span>
       </li>

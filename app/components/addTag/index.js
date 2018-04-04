@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './index.css';
 import className from 'classnames';
+import Tag from 'components/tag';
 import { Input, Popover, Button, Icon } from 'antd';
 
 const colorMap = [
@@ -81,7 +82,9 @@ export default class AddTag extends Component {
 
     return (
       <div className={styles.addTagBtn}>
-        添加标签
+        {/* <span className="can-click">添加标签</span> */}
+        <Tag content="很棒"/>
+        <Tag content="讨厌" color="red"/>
       </div>
     );
   }

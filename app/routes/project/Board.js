@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TaskDetail from 'routes/task';
+import ProjectMenu from 'components/projectMenu';
 import styles from './board.css';
 import Scrum from './Scrum';
 import Stage from './Stage';
@@ -7,8 +9,12 @@ import Task from './Task';
 
 export default class Board extends Component {
 
+  static propTypes = {
+    isOpenMenu: PropTypes.bool
+  }
+
   state = {
-    isOpenTaskDetail: false
+    isOpenTaskDetail: false,
   }
 
   openTaskDetail = () => {
@@ -24,6 +30,7 @@ export default class Board extends Component {
   }
 
   render() {
+    const { isOpenMenu, closeMenu } = this.props;
     const { isOpenTaskDetail } = this.state;
 
     return (
@@ -42,6 +49,11 @@ export default class Board extends Component {
           <Stage stageName="已完成" />
           <Stage create />
         </Scrum>
+        <ProjectMenu
+          isOpenMenu={isOpenMenu}
+          // bodyStyle={bodyStyle}
+          closeMenu={closeMenu}
+        />
         {isOpenTaskDetail && (
           <TaskDetail
             visible={true}
