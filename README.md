@@ -2,7 +2,7 @@
 
 > 仿 Teambition & Worktile
 
-安装
+开始
 
 ```
 git clone https://github.com/huangjiaqing/coopteam.git
