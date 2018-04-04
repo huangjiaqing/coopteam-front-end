@@ -9,9 +9,9 @@ export default class Project extends Component {
     isOpenMenu: false,
   }
 
-  openMenu = () => {
+  openMenu = (status=true) => {
     this.setState({
-      isOpenMenu: true
+      isOpenMenu: status
     });
   }
 
@@ -26,8 +26,14 @@ export default class Project extends Component {
 
     return (
       <div className={styles.project}>
-        <Header onMenuClick={this.openMenu} />
-        <Board isOpenMenu={isOpenMenu} closeMenu={this.closeMenu}/>
+        <Header
+          isOpenMenu={isOpenMenu}
+          onMenuClick={this.openMenu}
+        />
+        <Board
+          isOpenMenu={isOpenMenu}
+          closeMenu={this.closeMenu}
+        />
       </div>
     );
   }

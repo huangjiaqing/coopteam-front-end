@@ -51,15 +51,13 @@ export default class Board extends Component {
         </Scrum>
         <ProjectMenu
           isOpenMenu={isOpenMenu}
-          // bodyStyle={bodyStyle}
           closeMenu={closeMenu}
         />
         {isOpenTaskDetail && (
           <TaskDetail
             visible={true}
             closeTaskDetail={this.closeTaskDetail}
-          />
-        )}
+          />)}
       </div>
     );
   }

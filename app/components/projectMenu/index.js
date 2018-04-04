@@ -16,7 +16,7 @@ export default class ProjectMenu extends Component {
     const { isOpenMenu, bodyStyle={} } = this.props;
     const bodyDisplay = isOpenMenu
       ? {
-        width: '30rem',
+        width: '29rem',
         transition: 'width 0.25s cubic-bezier(0,1,0.39,1)'
       }
       : {
@@ -29,6 +29,7 @@ export default class ProjectMenu extends Component {
       <div className={styles.projectMenu} style={menuStyle}>
         <div className={isOpenMenu ? '' : styles.noShow}>
           {this.renderHeader()}
+          {this.renderBody()}
         </div>
       </div>
     );
@@ -48,6 +49,21 @@ export default class ProjectMenu extends Component {
           onClick={closeMenu}
         />
       </div>
+    );
+  }
+
+  renderBody() {
+    return (
+      <ul className={styles.body}>
+        <li className="can-click">
+          <span><Icon type="setting" /></span>
+          <span>项目设置</span>
+        </li>
+        <li className="can-click">
+          <span><Icon type="tags-o" /></span>
+          <span>标签</span>
+        </li>
+      </ul>
     );
   }
 }
