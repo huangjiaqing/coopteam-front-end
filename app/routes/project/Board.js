@@ -42,16 +42,12 @@ export default class Board extends Component {
           <Stage stageName="已完成" />
           <Stage create />
         </Scrum>
-        {
-          isOpenTaskDetail
-            ? (
-              <TaskDetail
-                visible={true}
-                closeTaskDetail={this.closeTaskDetail}
-              />
-            )
-            : ''
-        }
+        {isOpenTaskDetail && (
+          <TaskDetail
+            visible={true}
+            closeTaskDetail={this.closeTaskDetail}
+          />
+        )}
       </div>
     );
   }

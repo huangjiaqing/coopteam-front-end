@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
 import CustomFields from './CustomFields';
+import className from 'classnames';
+import Members from 'components/members';
 import { Modal, Icon, Checkbox, Avatar, DatePicker, Button } from 'antd';
 
 const TaskMainInfo = () => (
@@ -13,10 +15,12 @@ const TaskMainInfo = () => (
       </div>
     </div>
     <div className={styles.info}>
-      <div className={styles.executor}>
-        <Avatar icon="user" size="small"/>
-        <span>黄嘉庆</span>
-      </div>
+      <Members>
+        <div className={className(styles.executor, 'can-click')}>
+          <Avatar icon="user" size="small"/>
+          <span>黄嘉庆</span>
+        </div>
+      </Members>
       <div className={styles.time}>
         <DatePicker placeholder="设置截止时间"/>
       </div>
@@ -29,7 +33,13 @@ const Involve = () => (
     <h2>参与者</h2>
     <div className={styles.list}>
       <Avatar icon="user" size="small"/>
-      <Icon type="plus-circle" style={{ fontSize: '2rem', color: '#1890ff' }}/>
+      <Members>
+        <Icon
+          type="plus-circle"
+          style={{ fontSize: '2rem', color: '#1890ff' }}
+          className="can-click"
+        />
+      </Members>
     </div>
   </div>
 );
@@ -38,7 +48,7 @@ const Publish = () => (
   <div className={styles.publish}>
     <section className={styles.btn}>
       <div className={styles.action}>
-        <Icon type="upload" />
+        {/* <Icon type="upload" /> */}
       </div>
       <Button type="primary">
         发布
@@ -57,11 +67,11 @@ export default class Task extends Component {
 
     return (
       <Modal
-        visible={visible}
         width={600}
-        title={this.renderTitle()}
         closable={false}
         footer={<Publish />}
+        visible={visible}
+        title={this.renderTitle()}
       >
         <TaskMainInfo />
         <CustomFields />
