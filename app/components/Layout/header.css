@@ -13,20 +13,21 @@
 
 .org {
   color: #383838;
+  display: flex;
+  align-items: center;
   line-height: 0;
 
   & > h2 {
-    display: inline-block;
     font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 0;
   }
-}
 
-.orgIcon {
-  color: #383838;
-  font-size: 1.2rem;
-  padding: 0 1.2rem;
+  & > .orgIcon {
+    color: #383838;
+    font-size: 1.5rem;
+    padding: 0 1.2rem;
+  } 
 }
 
 .search {

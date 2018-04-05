@@ -17,9 +17,9 @@ export default class OrgSelect extends PureComponent {
     isShowSelf: true
   }
 
-  closeSelf = (orgId) => {
+  closeSelf = (org) => {
     setTimeout(() => {
-      this.props.getValue(orgId);
+      this.props.getValue(org);
       this.setState({
         isShowSelf: false 
       }, () => {
@@ -32,7 +32,7 @@ export default class OrgSelect extends PureComponent {
 
   componentDidMount() {
     const { data } = this.props;
-    this.props.getValue(data[0].orgId);
+    this.props.getValue(data[0]);
   }
 
   render() {
@@ -50,15 +50,19 @@ export default class OrgSelect extends PureComponent {
             <ul>
               {data.map(item => {
                 return this.renderOrgItem({
-                  name: item.name,
-                  orgId: item.orgId,
+                  data: item,
                   onSelect: this.closeSelf,
                   selected: selected === item.orgId
                 });
               })}
             </ul>
             <div className={styles.addOrg}>
-              <Icon type="plus" className={styles.addIcon}/>
+              <span>
+                <Icon
+                  type="plus"
+                  className={className(styles.addIcon, 'can-click')}
+                />
+              </span>
               <span>创建企业</span>
             </div>
           </div>
@@ -69,22 +73,25 @@ export default class OrgSelect extends PureComponent {
     );
   }
 
-  renderOrgItem = ({name, selected=false, orgId=1, onSelect}) => (
+  renderOrgItem = ({data, selected=false, onSelect}) => (
     <li
-      key={orgId}
-      onClick={() => onSelect(orgId)}
+      key={data.orgId}
+      onClick={() => onSelect(data)}
       className={className(
         styles.orgItem,
         selected ? styles.selectItem : '',
         'can-click')}>
       <span>
         {selected && (
-          <Icon
-            type='check'
-            className={styles.selectIcon}
-          />)}
+          <span>
+            <Icon
+              type='check'
+              className={styles.selectIcon}
+            /> 
+          </span>
+        )}
       </span>
-      <span>{name}</span>
+      <span>{data.name}</span>
     </li>
   )
 }

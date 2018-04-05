@@ -9,7 +9,7 @@
 
 .orgItem {
   padding: 1.2rem ;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #383838;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .addOrg > span {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .addIcon {

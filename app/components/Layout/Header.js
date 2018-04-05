@@ -14,16 +14,16 @@ import { observer, inject } from 'mobx-react';
 export default class extends Component {
 
   state = {
-    currentOrgId: undefined
+    currentOrg: null
   }
 
   /**
    * 获取组织
    * @param {*string} orgId 
    */
-  getOrg(orgId) {
+  getOrg(currentOrg) {
     this.setState({
-      currentOrgId: orgId
+      currentOrg
     });
   }
 
@@ -32,7 +32,7 @@ export default class extends Component {
   }
 
   render() {
-    const { currentOrgId } = this.state;
+    const { currentOrg } = this.state;
     const list = Array.from(this.props.OrgStore.list);
 
     return (
@@ -48,18 +48,20 @@ export default class extends Component {
         {list.length && (
           <div className={styles.header}>
             <div className={styles.org}>
-              <OrgSelect
-                data={list}
-                getValue={(orgId) => this.getOrg(orgId)}
-                selected={currentOrgId}
-              >
-                <Icon
-                  type="bars"
-                  className={className(styles.orgIcon, 'can-click')}
-                />
-              </OrgSelect>
+              <span className={styles.orgIcon}>
+                <OrgSelect
+                  data={list}
+                  getValue={(org) => this.getOrg(org)}
+                  selected={currentOrg && currentOrg.orgId}
+                >
+                  <Icon
+                    type="bars"
+                    className="can-click"
+                  />
+                </OrgSelect>
+              </span>
               <h2>
-                油车文化
+                {currentOrg && currentOrg.name}
               </h2>
             </div>
             <section className={styles.search}>
