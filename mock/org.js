@@ -19,8 +19,6 @@ export default function () {
 
 
   Mock.mock('/orgList', 'get', (options) => {
-    console.log('mock的options：', options);
-
     return orgList;
   });
 }

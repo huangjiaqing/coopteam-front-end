@@ -8,20 +8,14 @@ const OrgItem = ({ name, selected }) => (
     className={className(
       styles.orgItem,
       selected ? styles.selectItem : '',
-      'can-click'
-    )}
+      'can-click')}
   >
     <span>
-      {
-        selected
-          ? (
-            <Icon
-              type='check'
-              className={styles.selectIcon}
-            />
-          )
-          : ''
-      }
+      {selected && (
+        <Icon
+          type='check'
+          className={styles.selectIcon}
+        />)}
     </span>
     <span>{name}</span>
   </li>

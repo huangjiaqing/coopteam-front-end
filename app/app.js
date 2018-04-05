@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './router';
+import * as rootStore from 'store';
+import { Provider } from 'mobx-react';
 
 function render(Component) {
   if (process.env.NODE_ENV === 'development') {
     ReactDOM.render(
-      <Component />,
+      <Provider {...rootStore}>
+        <Component />
+      </Provider>,
       window.document.getElementById('root')
     );
   } else {
