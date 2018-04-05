@@ -6,14 +6,10 @@ class OrgStore {
   @observable list = [];
   
   @action getList = async () => {
-    try {
-      const res = await getList();
-      runInAction(() => {
-        this.list = res.data;
-      });
-    } catch(e) {
-      throw e;
-    }
+    const res = await getList();
+    runInAction(() => {
+      this.list = res.data;
+    });
   }
 }
 

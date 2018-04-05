@@ -1,57 +1,90 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styles from './index.css';
 import className from 'classnames';
 import { Popover, Icon } from 'antd';
 
-const OrgItem = ({ name, selected }) => (
-  <li
-    className={className(
-      styles.orgItem,
-      selected ? styles.selectItem : '',
-      'can-click')}
-  >
-    <span>
-      {selected && (
-        <Icon
-          type='check'
-          className={styles.selectIcon}
-        />)}
-    </span>
-    <span>{name}</span>
-  </li>
-);
+export default class OrgSelect extends PureComponent {
 
-const OrgSelect = ({ data, children }) => {
-  console.log('data: ', data);
+  static propTypes = {
+    data: PropTypes.array,
+    selected: PropTypes.string,
+    getValue: PropTypes.func,
+    children: PropTypes.any
+  }
 
-  return (
-    <Popover
-      trigger='click'
-      placement='bottom'
-      content={
-        <div className={styles.orgSelect}>
-          <ul>
-            {data.map(item => (
-              <OrgItem
-                name={item.name}
-                key={item.orgId}
-              />
-            ))}
-            <OrgItem
-              name='百度技术团队'
-              selected
-            />
-          </ul>
-          <div className={styles.addOrg}>
-            <Icon type="plus" className={styles.addIcon}/>
-            <span>创建企业</span>
+  state = {
+    isShowSelf: true
+  }
+
+  closeSelf = (orgId) => {
+    setTimeout(() => {
+      this.props.getValue(orgId);
+      this.setState({
+        isShowSelf: false 
+      }, () => {
+        this.setState({
+          isShowSelf: true
+        });
+      });
+    }, 100);
+  }
+
+  componentDidMount() {
+    const { data } = this.props;
+    this.props.getValue(data[0].orgId);
+  }
+
+  render() {
+    const { data, children, selected } = this.props;
+    const { isShowSelf } = this.state;
+    const visible = isShowSelf ? {} : { visible: false };
+
+    return (
+      <Popover
+        {...visible}
+        trigger='click'
+        placement='bottom'
+        content={
+          <div className={styles.orgSelect}>
+            <ul>
+              {data.map(item => {
+                return this.renderOrgItem({
+                  name: item.name,
+                  orgId: item.orgId,
+                  onSelect: this.closeSelf,
+                  selected: selected === item.orgId
+                });
+              })}
+            </ul>
+            <div className={styles.addOrg}>
+              <Icon type="plus" className={styles.addIcon}/>
+              <span>创建企业</span>
+            </div>
           </div>
-        </div>
-      }
-    >
-      {children}
-    </Popover>
-  );
-};
+        }
+      >
+        {children}
+      </Popover>
+    );
+  }
 
-export default OrgSelect;
+  renderOrgItem = ({name, selected=false, orgId=1, onSelect}) => (
+    <li
+      key={orgId}
+      onClick={() => onSelect(orgId)}
+      className={className(
+        styles.orgItem,
+        selected ? styles.selectItem : '',
+        'can-click')}>
+      <span>
+        {selected && (
+          <Icon
+            type='check'
+            className={styles.selectIcon}
+          />)}
+      </span>
+      <span>{name}</span>
+    </li>
+  )
+}
