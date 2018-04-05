@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
 import { getList } from 'services/orgApi';
 
 class OrgStore {
@@ -8,7 +8,9 @@ class OrgStore {
   @action getList = async () => {
     try {
       const res = await getList();
-      this.list = res.data;
+      runInAction(() => {
+        this.list = res.data;
+      });
     } catch(e) {
       throw e;
     }

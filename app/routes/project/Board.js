@@ -6,10 +6,7 @@ import styles from './board.css';
 import Scrum from './Scrum';
 import Stage from './Stage';
 import Task from './Task';
-import { observer, inject } from 'mobx-react';
 
-@inject('OrgStore')
-@observer
 export default class Board extends Component {
 
   static propTypes = {
@@ -32,14 +29,9 @@ export default class Board extends Component {
     });
   }
 
-  componentDidMount() {
-    this.props.OrgStore.getList();
-  }
-
   render() {
     const { isOpenMenu, closeMenu, OrgStore } = this.props;
     const { isOpenTaskDetail } = this.state;
-    console.log(OrgStore.list);
 
     return (
       <div className={styles.board}>

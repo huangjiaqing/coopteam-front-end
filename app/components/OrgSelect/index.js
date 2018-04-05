@@ -21,7 +21,8 @@ const OrgItem = ({ name, selected }) => (
   </li>
 );
 
-export default function OrgSelect({ children }) {
+const OrgSelect = ({ data, children }) => {
+  console.log('data: ', data);
 
   return (
     <Popover
@@ -30,12 +31,15 @@ export default function OrgSelect({ children }) {
       content={
         <div className={styles.orgSelect}>
           <ul>
-            <OrgItem
-              name='油车文化'
-              selected
-            />
+            {data.map(item => (
+              <OrgItem
+                name={item.name}
+                key={item.orgId}
+              />
+            ))}
             <OrgItem
               name='百度技术团队'
+              selected
             />
           </ul>
           <div className={styles.addOrg}>
@@ -48,4 +52,6 @@ export default function OrgSelect({ children }) {
       {children}
     </Popover>
   );
-}
+};
+
+export default OrgSelect;
