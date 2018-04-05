@@ -9,6 +9,7 @@ const { Search } = Input;
 
 import { observer, inject } from 'mobx-react';
 
+@inject('ProjectStore')
 @inject('OrgStore')
 @observer
 export default class extends Component {
@@ -24,6 +25,11 @@ export default class extends Component {
   getOrg(currentOrg) {
     this.setState({
       currentOrg
+    }, () => {
+      this
+        .props
+        .ProjectStore
+        .getProjects(currentOrg.orgId);
     });
   }
 

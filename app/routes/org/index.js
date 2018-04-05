@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styles from './index.css';
 import OrgItem from './OrgItem';
+import { observer, inject } from 'mobx-react';
 
+@inject('ProjectStore')
+@observer
 export default class Org extends Component {
 
   state = {
@@ -22,6 +25,10 @@ export default class Org extends Component {
         { name: '大招科技' }
       ]
     }
+  }
+
+  componentDidMount() {
+    // this.props.ProjectStore.getProjects();
   }
 
   render() {

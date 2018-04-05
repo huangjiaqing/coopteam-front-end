@@ -56,7 +56,7 @@ export default class OrgSelect extends PureComponent {
                 });
               })}
             </ul>
-            <div className={styles.addOrg}>
+            <div className={className(styles.addOrg, 'can-click')}>
               <span>
                 <Icon
                   type="plus"
