@@ -3,4 +3,4 @@ import api from 'mock/project';
 
 api();
 
-export const getProjects = (orgId='') => request.get(`/getProjects/orgId=${orgId}`);
+export const getStages = (projectId) => request.get(`/getStages?projectId=${projectId}`); 

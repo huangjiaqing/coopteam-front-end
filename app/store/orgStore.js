@@ -1,16 +1,23 @@
 import { observable, action, runInAction } from 'mobx';
-import { getList } from 'services/orgApi';
+import { getOrgs, getProjects } from 'services/orgApi';
 
-class OrgStore {
+export default new class OrgStore {
 
-  @observable list = [];
+  @observable orgs = [];
+  @observable projects = [];
   
-  @action getList = async () => {
-    const res = await getList();
+  @action getOrgs = async () => {
+    const res = await getOrgs();
     runInAction(() => {
-      this.list = res.data;
+      this.orgs = res.data;
     });
   }
-}
 
-export default new OrgStore;
+  @action getProjects = async (orgId) => {
+    const res = await getProjects(orgId);
+    runInAction(() => {
+      this.projects = res.data;
+    });
+  }
+  
+};

@@ -3,7 +3,7 @@ import styles from './index.css';
 import OrgItem from './OrgItem';
 import { observer, inject } from 'mobx-react';
 
-@inject('ProjectStore')
+@inject('OrgStore')
 @observer
 export default class Org extends Component {
 
@@ -18,7 +18,7 @@ export default class Org extends Component {
   }
 
   getProjects() {
-    const projects = Array.from(this.props.ProjectStore.projects);
+    const projects = Array.from(this.props.OrgStore.projects);
 
     return {
       stared: projects.filter(item => item.stared),

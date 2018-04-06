@@ -9,7 +9,7 @@ const { Search } = Input;
 
 import { observer, inject } from 'mobx-react';
 
-@inject('ProjectStore')
+// @inject('ProjectStore')
 @inject('OrgStore')
 @observer
 export default class extends Component {
@@ -28,18 +28,18 @@ export default class extends Component {
     }, () => {
       this
         .props
-        .ProjectStore
+        .OrgStore
         .getProjects(currentOrg.orgId);
     });
   }
 
   componentDidMount() {
-    this.props.OrgStore.getList();
+    this.props.OrgStore.getOrgs();
   }
 
   render() {
     const { currentOrg } = this.state;
-    const list = Array.from(this.props.OrgStore.list);
+    const orgs = Array.from(this.props.OrgStore.orgs);
 
     return (
       <Header
@@ -51,12 +51,12 @@ export default class extends Component {
           padding: '0'
         }}
       >
-        {list.length && (
+        {orgs.length && (
           <div className={styles.header}>
             <div className={styles.org}>
               <span className={styles.orgIcon}>
                 <OrgSelect
-                  data={list}
+                  data={orgs}
                   getValue={(org) => this.getOrg(org)}
                   selected={currentOrg && currentOrg.orgId}
                 >

@@ -1,14 +1,15 @@
 import { observable, action, runInAction } from 'mobx';
-import { getProjects } from 'services/projectApi';
+import { getProjects, getStages } from 'services/projectApi';
 
 export default new class ProjectStore {
 
-  @observable projects = []
+  @observable stages = []
 
-  @action getProjects = async (orgId) => {
-    const res = await getProjects(orgId);
-    runInAction(() => {
-      this.projects = res.data;
-    });
+  @action getStages = async (projectId) => {
+    const res = await getStages(projectId);
+    console.log(res);
+    // runInAction(() => {
+    //   this.stages = res.data;
+    // });
   }
 };

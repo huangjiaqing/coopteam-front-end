@@ -3,4 +3,6 @@ import api from 'mock/org';
 
 api();
 
-export const getList = () => request.get('/orgList');
+export const getOrgs = () => request.get('/orgList');
+
+export const getProjects = (orgId='') => request.get(`/getProjects?orgId=${orgId}`);
