@@ -4,7 +4,7 @@ const projectList = [
   {
     projectId: '1',
     name: '立白悦协作',
-    stared: false,
+    stared: true,
     isInBin: false,
   },
   {
@@ -22,7 +22,7 @@ const projectList = [
   {
     projectId: '4',
     name: '长江证券',
-    stared: false,
+    stared: true,
     isInBin: false,
   },
   {
@@ -47,13 +47,13 @@ const projectList = [
     projectId: '8',
     name: '大招科技项目',
     stared: false,
-    isInBin: false,
+    isInBin: true,
   },
   {
     projectId: '9',
     name: '绩牛科技项目',
     stared: false,
-    isInBin: false,
+    isInBin: true,
   },
   {
     projectId: '10',

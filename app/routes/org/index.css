@@ -8,18 +8,29 @@
 .center {
   width: 96rem;
   padding-top: 4rem;  /* 和 header 高度一致 */
-}
 
-.center > section {
-  width: inherit;
-  margin-bottom: 4rem;
-}
+  & > section {
+    width: inherit;
+    margin-bottom: 4rem;
 
-.center > section > h2 {
-  font-size: 1.3rem;
-  color: #383838;
-  font-weight: 400;
-  margin-bottom: 1.4rem !important;
+    & > h2 {
+      font-size: 1.3rem;
+      color: #383838;
+      font-weight: 400;
+      margin-bottom: 1.4rem !important;
+    }
+  }
+
+  & > section:last-child > h2 {
+    display: flex;
+    align-items: center;
+
+    & > span:last-child {
+      font-size: 1.2rem;
+      color: gray;
+      margin-left: 1rem;
+    }
+  }
 }
 
 .projGroup {

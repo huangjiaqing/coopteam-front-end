@@ -8,39 +8,36 @@ import { observer, inject } from 'mobx-react';
 export default class Org extends Component {
 
   state = {
-    data: {
-      stared: [
-        { name: '立白悦协作', stared: true },
-        { name: '北控项目面板', stared: true },
-      ],
-      orgs: [
-        { name: '立白悦协作', stared: true },
-        { name: '北控项目面板', stared: true },
-        { name: '固定资产' },
-        { name: '黄嘉庆的项目' },
-        { name: '天明的项目' },
-        { name: '梁爽的项目' },
-      ],
-      bin: [
-        { name: '大招科技' }
-      ]
-    }
+    isShowBin: false
   }
 
-  componentDidMount() {
-    // this.props.ProjectStore.getProjects();
+  onShowBin = () => {
+    this.setState({
+      isShowBin: !this.state.isShowBin
+    });
+  }
+
+  getProjects() {
+    const projects = Array.from(this.props.ProjectStore.projects);
+
+    return {
+      stared: projects.filter(item => item.stared),
+      orgs: projects.filter(item => !item.isInBin),
+      bin: projects.filter(item => item.isInBin),
+    };
   }
 
   render() {
-    const data = this.state.data;
+    const { isShowBin } = this.state;
+    const projects = this.getProjects();
 
     return (
       <div className={styles.org}>
         <div className={styles.center}>
-          <section>
+          <section style={{ display: projects.stared.length ? 'block' : 'none' }}>
             <h2>星标项目</h2>
             <div className={styles.projGroup}>
-              {data.stared.map((item, idx) => (
+              {projects.stared.map((item, idx) => (
                 <OrgItem
                   key={idx}
                   name={item.name}
@@ -52,7 +49,7 @@ export default class Org extends Component {
           <section>
             <h2>企业项目</h2>
             <div className={styles.projGroup}>
-              {data.orgs.map((item, idx) => (
+              {projects.orgs.map((item, idx) => (
                 <OrgItem
                   key={idx}
                   name={item.name}
@@ -62,16 +59,26 @@ export default class Org extends Component {
             </div>
           </section>
           <section>
-            <h2>项目回收站</h2>
-            <div className={styles.projGroup}>
-              {data.bin.map((item, idx) => (
-                <OrgItem
-                  key={idx}
-                  name={item.name}
-                  stared={item.stared}
-                />
-              ))}
-            </div>
+            <h2>
+              <span>项目回收站</span>
+              <span
+                className="can-click"
+                onClick={this.onShowBin}
+              >
+                {isShowBin ? '隐藏' : '显示'}
+              </span>
+            </h2>
+            {isShowBin && (
+              <div className={styles.projGroup}>
+                {projects.bin.map((item, idx) => (
+                  <OrgItem
+                    key={idx}
+                    name={item.name}
+                    stared={item.stared}
+                  />
+                ))}
+              </div>
+            )}
           </section>
         </div>
       </div>

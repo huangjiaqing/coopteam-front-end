@@ -7,6 +7,8 @@ export default new class ProjectStore {
 
   @action getProjects = async (orgId) => {
     const res = await getProjects(orgId);
-    console.log(res);
+    runInAction(() => {
+      this.projects = res.data;
+    });
   }
 };
