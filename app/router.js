@@ -15,7 +15,7 @@ const App = () => {
     <Layout>
       <Switch>
         <Route path='/org' component={Org}/>
-        <Route exact path='/project' component={Project}/>
+        <Route exact path='/project/:projectId' component={Project}/>
         <Redirect path='/' to='/org'/>
       </Switch>
     </Layout>

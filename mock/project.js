@@ -6,7 +6,7 @@ export default function () {
     const projectId = req.url.slice(-1);
 
     switch(projectId) {
-    case '1': {
+    case '1':
       return [
         {
           stage: 1,
@@ -24,8 +24,7 @@ export default function () {
           taskCount: 2,
         }
       ];
-    }
-    case '2': {
+    case '2':
       return [
         {
           stage: 1,
@@ -41,9 +40,13 @@ export default function () {
           stage: 3,
           name: '已完成',
           taskCount: 2,
+        },
+        {
+          stage: 4,
+          name: '已部署',
+          taskCount: 0,
         }
       ];
-    }
     }
   });
 }

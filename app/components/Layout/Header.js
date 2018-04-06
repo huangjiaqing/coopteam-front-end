@@ -3,13 +3,11 @@ import styles from './header.css';
 import OrgSelect from 'components/orgSelect';
 import className from 'classnames';
 import { Layout, Icon, Avatar, Input } from 'antd';
+import { observer, inject } from 'mobx-react';
 
 const { Header } = Layout;
 const { Search } = Input;
 
-import { observer, inject } from 'mobx-react';
-
-// @inject('ProjectStore')
 @inject('OrgStore')
 @observer
 export default class extends Component {
@@ -49,8 +47,7 @@ export default class extends Component {
           height: '48px',
           boxShadow: '0 1px 3px 0 rgba(0,0,0,.15)',
           padding: '0'
-        }}
-      >
+        }}>
         {orgs.length && (
           <div className={styles.header}>
             <div className={styles.org}>
@@ -58,8 +55,7 @@ export default class extends Component {
                 <OrgSelect
                   data={orgs}
                   getValue={(org) => this.getOrg(org)}
-                  selected={currentOrg && currentOrg.orgId}
-                >
+                  selected={currentOrg && currentOrg.orgId}>
                   <Icon
                     type="bars"
                     className="can-click"

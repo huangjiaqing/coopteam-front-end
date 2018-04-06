@@ -7,9 +7,8 @@ export default new class ProjectStore {
 
   @action getStages = async (projectId) => {
     const res = await getStages(projectId);
-    console.log(res);
-    // runInAction(() => {
-    //   this.stages = res.data;
-    // });
+    runInAction(() => {
+      this.stages = res.data;
+    });
   }
 };

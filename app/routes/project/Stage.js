@@ -3,7 +3,8 @@ import styles from './stage.css';
 import className from 'classnames';
 import { Icon } from 'antd';
 
-export default function Stage({ stageName, create, children }) {
+export default function Stage({ data={}, create, children }) {
+  const { name, taskCount } = data;
 
   return (
     <li className={className(styles.stage, create ? styles.create : '')}>
@@ -16,7 +17,7 @@ export default function Stage({ stageName, create, children }) {
             </div>
           )
           : [
-            <h2 className={styles.title} key="title">{stageName} · 1</h2>,
+            <h2 className={styles.title} key="title">{name} · {taskCount}</h2>,
             <div
               className={styles.tasks}
               key="list"

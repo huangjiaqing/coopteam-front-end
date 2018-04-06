@@ -40,8 +40,7 @@ export default class Org extends Component {
               {projects.stared.map((item, idx) => (
                 <OrgItem
                   key={idx}
-                  name={item.name}
-                  stared={item.stared}
+                  data={item}
                 />
               ))}
             </div>
@@ -52,8 +51,7 @@ export default class Org extends Component {
               {projects.orgs.map((item, idx) => (
                 <OrgItem
                   key={idx}
-                  name={item.name}
-                  stared={item.stared}
+                  data={item}
                 />
               ))}
             </div>
@@ -73,8 +71,7 @@ export default class Org extends Component {
                 {projects.bin.map((item, idx) => (
                   <OrgItem
                     key={idx}
-                    name={item.name}
-                    stared={item.stared}
+                    data={item}
                   />
                 ))}
               </div>

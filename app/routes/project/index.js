@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import Header from './Header';
 import Board from './Board';
+import { observer, inject } from 'mobx-react';
 
+@inject('ProjectStore')
+@observer
 export default class Project extends Component {
 
   state = {
@@ -21,6 +24,25 @@ export default class Project extends Component {
     });    
   }
 
+  componentDidMount() {
+    const projectId = this
+      .props
+      .match
+      .params
+      .projectId;
+    this
+      .props
+      .ProjectStore
+      .getStages(projectId);
+  }
+
+  getStages = () => {
+    return Array.from(this
+      .props
+      .ProjectStore
+      .stages);
+  }
+
   render() {
     const { isOpenMenu } = this.state;
 
@@ -33,6 +55,7 @@ export default class Project extends Component {
         <Board
           isOpenMenu={isOpenMenu}
           closeMenu={this.closeMenu}
+          stages={this.getStages()}
         />
       </div>
     );
