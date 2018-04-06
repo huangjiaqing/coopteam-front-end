@@ -8,13 +8,14 @@ import {
 import Layout from 'components/layout';
 import Org from 'routes/org';
 import Project from 'routes/project';
+import Login from 'routes/login';
 
 const App = () => {
 
   return (
     <Layout>
       <Switch>
-        <Route path='/org' component={Org}/>
+        <Route exact path='/org' component={Org}/>
         <Route exact path='/project/:projectId' component={Project}/>
         <Redirect path='/' to='/org'/>
       </Switch>
@@ -25,7 +26,8 @@ const App = () => {
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={App}/>
+      <Route path='/' component={App} />
+      <Route exact path='/login' component={Login} />
     </Switch>
   </BrowserRouter>
 );
