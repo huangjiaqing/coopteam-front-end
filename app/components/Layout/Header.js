@@ -27,9 +27,13 @@ class MySet extends Component {
     );
   }
 
+  handleClick = (e) => {
+    this.props.closePopover();
+  }
+
   renderContent() {
     return (
-      <ul className={styles.mySet} onClick={this.props.closePopover}>
+      <ul className={styles.mySet} onClick={this.handleClick}>
         <li className="can-click">账号设置</li>
         <li className="can-click">退出登录</li>
       </ul>
@@ -37,6 +41,43 @@ class MySet extends Component {
   }
 }
 
+@PopoverClose
+class Add extends Component {
+
+  handleClick = (e) => {
+    this.props.closePopover();
+  }
+
+  render() {
+    const { visible, children } = this.props;
+
+    return (
+      <Popover
+        {...visible}
+        content={this.renderContent()}
+        trigger='click'
+        placement='bottom'
+      >
+        {children}
+      </Popover>
+    );
+  }
+
+  renderContent() {
+    return (
+      <ul className={styles.add} onClick={this.handleClick}>
+        <li className="can-click">
+          <span><Icon type="appstore-o" /></span>
+          <span>项目</span>
+        </li>
+        <li className="can-click">
+          <span><Icon type="profile" /></span>
+          <span>任务</span>
+        </li>
+      </ul>
+    );
+  }
+}
 
 @inject('OrgStore')
 @observer
@@ -102,7 +143,12 @@ export default class extends Component {
                 onSearch={value => console.log(value)}
                 style={{ width: 240 }}
               />
-              <Icon type="plus-circle" className={styles.addTask}/>
+              <Add>
+                <Icon
+                  type="plus-circle"
+                  className={className(styles.addTask, 'can-click')}
+                />
+              </Add>
             </section>
             <section className={styles.me}>
               <MySet>
