@@ -14,7 +14,7 @@ export default class Login extends Component {
       .form
       .validateFields((err, value) => {
         if (!err) {
-          console.log('表单的数据为： ', value);
+          this.props.history.push('/');
         }
       });
   }

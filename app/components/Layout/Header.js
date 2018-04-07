@@ -1,12 +1,42 @@
 import React, { Component } from 'react';
 import styles from './header.css';
-import OrgSelect from 'components/orgSelect';
 import className from 'classnames';
-import { Layout, Icon, Avatar, Input } from 'antd';
+import OrgSelect from 'components/orgSelect';
+import PopoverClose from 'components/popoverClose';
+import { Popover, Layout, Icon, Avatar, Input } from 'antd';
 import { observer, inject } from 'mobx-react';
 
 const { Header } = Layout;
 const { Search } = Input;
+
+@PopoverClose
+class MySet extends Component {
+
+  render() {
+    const { visible, children } = this.props;
+
+    return (
+      <Popover
+        {...visible}
+        content={this.renderContent()}
+        trigger='click'
+        placement='bottom'
+      >
+        {children}
+      </Popover>
+    );
+  }
+
+  renderContent() {
+    return (
+      <ul className={styles.mySet} onClick={this.props.closePopover}>
+        <li className="can-click">账号设置</li>
+        <li className="can-click">退出登录</li>
+      </ul>
+    );
+  }
+}
+
 
 @inject('OrgStore')
 @observer
@@ -75,11 +105,14 @@ export default class extends Component {
               <Icon type="plus-circle" className={styles.addTask}/>
             </section>
             <section className={styles.me}>
-              <Avatar
-                icon="user"
-                src="https://i.loli.net/2018/03/25/5ab6f20c79726.jpg"
-                size="small"
-              />
+              <MySet>
+                <Avatar
+                  icon="user"
+                  src="https://i.loli.net/2018/03/25/5ab6f20c79726.jpg"
+                  size="small"
+                  className="can-click"
+                />
+              </MySet>
             </section>
           </div>
         )}

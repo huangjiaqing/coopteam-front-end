@@ -16,9 +16,9 @@ const App = (props) => {
   return (
     <Layout>
       <Switch>
-        <Route path={`${match.url}org`} component={Org}/>
-        <Route path={`${match.url}project/:projectId`} component={Project}/>
-        <Redirect to={`${match.url}org`} />
+        <Route exact path={`${match.url}org`} component={Org}/>
+        <Route exact path={`${match.url}project/:projectId`} component={Project}/>
+        <Redirect exact to={`${match.url}org`} />
       </Switch>
     </Layout>
   );
@@ -30,6 +30,7 @@ const Router = () => (
       {/* 注意匹配顺序 */}
       <Route exact path='/login' component={Login} />
       <Route path='/' component={App} />
+      {/* <Redirect to='login' /> */}
     </Switch>
   </BrowserRouter>
 );
