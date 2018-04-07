@@ -1,0 +1,47 @@
+:root {
+  --active-color: #3da8f5;
+  --boder-color: #eee;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.body {
+  width: inherit;
+  height: 60rem;
+  display: flex;
+}
+
+.left {
+  width: 20%;
+  height: 100%;
+  border-right: 1px solid var(--boder-color);
+  margin-bottom: 0;
+}
+
+.opt {
+  padding: 1.3rem;
+  font-size: 1.1rem;
+  color: gray;
+  border-bottom: 1px solid var(--boder-color);
+
+  & > span:first-child {
+    margin-right: 0.6rem;
+  }
+
+  &:hover {
+    color: var(--active-color);
+  }
+}
+
+.opt.selected {
+  border-left: 0.3rem solid var(--active-color);
+  color: var(--active-color);
+}
+
+.right {
+  width: 80%;
+  height: 100%;
+}

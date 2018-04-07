@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import OrgItem from './OrgItem';
 import { observer, inject } from 'mobx-react';
+import ProjectSet from 'components/projectSet';
 
 @inject('OrgStore')
 @observer
@@ -33,6 +34,7 @@ export default class Org extends Component {
 
     return (
       <div className={styles.org}>
+        <ProjectSet />
         <div className={styles.center}>
           <section style={{ display: projects.stared.length ? 'block' : 'none' }}>
             <h2>星标项目</h2>
