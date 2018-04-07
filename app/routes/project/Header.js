@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import className from 'classnames';
 import styles from './header.css';
+import SelectProj from 'components/selectProj';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -12,9 +14,9 @@ const Header = ({ isOpenMenu, onMenuClick }) => (
           <Link to="/org">首页</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          {/* <SelectProj> */}
+          <SelectProj>
             立白悦协作
-          {/* </SelectProj> */}
+          </SelectProj>
         </Breadcrumb.Item>
       </Breadcrumb>
     </section>
