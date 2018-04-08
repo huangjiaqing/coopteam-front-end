@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import className from 'classnames';
 import styles from './index.css';
-import { Modal, Icon } from 'antd';
+import { Modal, Icon, Button, Input, Avatar } from 'antd';
+
+const { TextArea } = Input;
 
 const opts = [
   {
@@ -11,11 +13,6 @@ const opts = [
   },
   {
     tab: 2,
-    name: '任务权限',
-    icon: 'file-text',
-  },
-  {
-    tab: 3,
     name: '更多',
     icon: 'ellipsis',
   }
@@ -81,9 +78,77 @@ export default class ProjectSet extends Component {
   }
 
   renderRight() {
+    const { tabFocus } = this.state;
 
     return (
-      <div className={styles.right}></div>
+      <div className={styles.right}>
+        {tabFocus === 1 && this.renderInfo()}
+        {tabFocus === 2 && this.renderMore()}
+      </div>
+    );
+  }
+
+  renderInfo() {
+    return [
+      <div className={styles.info} key="input">
+        {this.renderRightItem('项目封面', (
+          <div className={styles.cover}>
+            <div className={styles.img} />
+            <Button>上传新封面</Button>
+          </div>))}
+        {this.renderRightItem('项目名称', (
+          <div>
+            <Input placeholder="请输入项目名称" />
+          </div>))}
+        {this.renderRightItem('项目简介', (
+          <div>
+            <TextArea rows={3} placeholder="请输入项目简介" />
+          </div>))}
+        {this.renderRightItem('项目拥有者', (
+          <div className={styles.projectOwner}>
+            <div className={styles.owner}>
+              <span><Avatar icon="user" size="small" /></span>
+              <span>黄嘉庆</span>
+            </div>
+            <div>
+              <Button>移交</Button>
+            </div>
+          </div>))}
+      </div>,
+      <div className={styles.infoSave} key="save">
+        <Button type="primary" disabled>保存</Button>
+      </div>
+    ];
+  }
+
+  renderMore() {
+    return (
+      <div className={styles.more}>
+        {this.renderRightItem('项目操作', (
+          <div className={styles.operation}>
+            <span>你可以执行以下操作</span>
+            <span>
+              <Button
+                style={{
+                  backgroundColor: '#ff4f3e',
+                  borderColor: '#ff4f3e',
+                  color: '#fff'
+                }}>
+                移动到回收站
+              </Button>
+            </span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  renderRightItem(name='', children=null) {
+    return (
+      <section className={styles.infoItem}>
+        <h2>{name}</h2>
+        <div>{children}</div>
+      </section>
     );
   }
 }

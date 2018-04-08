@@ -1,11 +1,12 @@
 :root {
   --active-color: #3da8f5;
   --boder-color: #eee;
+  --title-color: rgba(0,0,0, .7);
 }
 
 .title {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .body {
@@ -23,7 +24,7 @@
 
 .opt {
   padding: 1.3rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: gray;
   border-bottom: 1px solid var(--boder-color);
   position: relative;
@@ -54,4 +55,67 @@
 .right {
   width: 80%;
   height: 100%;
+  padding: 2.2rem;
+}
+
+.info {
+  width: 100%;
+
+  & .cover {
+    display: flex;
+
+    & > .img {
+      width: 20rem;
+      height: 10rem;
+      background-color: pink;
+      border-radius: 4px;
+      margin-right: 2rem;
+    }
+  }
+
+}
+
+.infoItem {
+  margin-bottom: 2rem;
+
+  & > h2 {
+    font-size: 1.3rem;
+    color: var(--title-color);
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+
+.projectOwner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > .owner {
+    display: flex;
+    align-items: center;
+  
+    & > span:first-child {
+      margin-right: 0.7rem;
+    }
+  }
+}
+
+.infoSave {
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.operation {
+  display: flex;
+  flex-direction: column;
+
+  & > span:first-child {
+    color: gray;
+    margin-bottom: 1.4rem;
+  }
+
+
 }
