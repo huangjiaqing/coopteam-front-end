@@ -3,17 +3,39 @@ import className from 'classnames';
 import styles from './index.css';
 import { Modal, Icon } from 'antd';
 
+const opts = [
+  {
+    tab: 1,
+    name: '项目信息',
+    icon: 'book',
+  },
+  {
+    tab: 2,
+    name: '任务权限',
+    icon: 'file-text',
+  },
+  {
+    tab: 3,
+    name: '更多',
+    icon: 'ellipsis',
+  }
+];
+
 export default class ProjectSet extends Component {
 
   state = {
-    tabFocus: 0
+    tabFocus: 1
+  }
+
+  onTabChange(tabFocus) {
+    this.setState({tabFocus});
   }
 
   render() {
 
     return (
       <Modal
-        // visible
+        visible
         width={800}
         title={<h2 className={styles.title}>项目设置</h2>}
         footer={null}
@@ -31,22 +53,29 @@ export default class ProjectSet extends Component {
 
     return (
       <ul className={styles.left}>
-        {this.renderOpt('项目信息', 'book', true)}
-        {this.renderOpt('任务权限', 'file-text')}
-        {this.renderOpt('更多', 'ellipsis')}
+        {opts.map((item, idx) => {
+          return this.renderOpt(item);
+        })}
       </ul>
     );
   }
 
-  renderOpt(content='', icon='book', selected=false) {
+  renderOpt(opt) {
+    const { tab, name, icon } = opt;
+    const { tabFocus } = this.state;
+
     return (
-      <li className={className(
-        styles.opt,
-        selected ? styles.selected : '',
-        'can-click'
-      )}>
+      <li
+        className={className(
+          styles.opt,
+          tab === tabFocus ? styles.selected : '',
+          'can-click'
+        )}
+        key={tab}
+        onClick={() => this.onTabChange(tab)}
+      >
         <span><Icon type={icon} /></span>
-        <span>{content}</span>
+        <span>{name}</span>
       </li>
     );
   }

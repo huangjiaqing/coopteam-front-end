@@ -26,6 +26,8 @@
   font-size: 1.1rem;
   color: gray;
   border-bottom: 1px solid var(--boder-color);
+  position: relative;
+  display: flex;
 
   & > span:first-child {
     margin-right: 0.6rem;
@@ -34,11 +36,19 @@
   &:hover {
     color: var(--active-color);
   }
+
+  &.selected {
+    color: var(--active-color);
+  }
 }
 
-.opt.selected {
-  border-left: 0.3rem solid var(--active-color);
-  color: var(--active-color);
+.opt:before {
+  background-color: var(--active-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0.3rem;
 }
 
 .right {
