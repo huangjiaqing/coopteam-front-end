@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import styles from './index.css';
 import OrgItem from './OrgItem';
-import { observer, inject } from 'mobx-react';
 import ProjectSet from 'components/projectSet';
+import { observer, inject } from 'mobx-react';
 
 @inject('OrgStore')
 @observer
 export default class Org extends Component {
 
   state = {
-    isShowBin: false
+    isShowBin: false,
+    isShowProjectSet: false,
   }
 
   onShowBin = () => {
     this.setState({
       isShowBin: !this.state.isShowBin
+    });
+  }
+
+  onShowProjectSet(e, isShow=false) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      isShowProjectSet: isShow
     });
   }
 
@@ -29,33 +38,27 @@ export default class Org extends Component {
   }
 
   render() {
-    const { isShowBin } = this.state;
-    const projects = this.getProjects();
+    const { isShowBin, isShowProjectSet } = this.state;
+    const { stared, orgs, bin } = this.getProjects();
 
     return (
       <div className={styles.org}>
-        <ProjectSet />
+        {isShowProjectSet && (
+          <ProjectSet
+            closeModal={(e) => this.onShowProjectSet(e, false)}
+            visible={isShowProjectSet}
+          />)}
         <div className={styles.center}>
-          <section style={{ display: projects.stared.length ? 'block' : 'none' }}>
+          <section style={{ display: stared.length ? 'block' : 'none' }}>
             <h2>星标项目</h2>
             <div className={styles.projGroup}>
-              {projects.stared.map((item, idx) => (
-                <OrgItem
-                  key={idx}
-                  data={item}
-                />
-              ))}
+              {stared.map((item, idx) => this.renderProjectItem(idx, item))}
             </div>
           </section>
           <section>
             <h2>企业项目</h2>
             <div className={styles.projGroup}>
-              {projects.orgs.map((item, idx) => (
-                <OrgItem
-                  key={idx}
-                  data={item}
-                />
-              ))}
+              {orgs.map((item, idx) => this.renderProjectItem(idx, item))}
             </div>
           </section>
           <section>
@@ -70,17 +73,22 @@ export default class Org extends Component {
             </h2>
             {isShowBin && (
               <div className={styles.projGroup}>
-                {projects.bin.map((item, idx) => (
-                  <OrgItem
-                    key={idx}
-                    data={item}
-                  />
-                ))}
+                {bin.map((item, idx) => this.renderProjectItem(idx, item))}
               </div>
             )}
           </section>
         </div>
       </div>
+    );
+  }
+
+  renderProjectItem = (key, data) => {
+    return (
+      <OrgItem
+        key={key}
+        data={data}
+        openEdit={(e) => this.onShowProjectSet(e, true, data)}
+      />
     );
   }
 }

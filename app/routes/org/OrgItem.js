@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './orgItem.css';
 import className from 'classnames';
 import { Link } from 'react-router-dom';
 import { Icon } from 'antd';
 
-const OrgItem = ({ data={} }) => {
+const OrgItem = ({ data={}, openEdit }) => {
   const { name, stared, projectId } = data;
 
   return (
@@ -17,7 +18,7 @@ const OrgItem = ({ data={} }) => {
           <Icon
             type="edit"
             className={className(styles.projIcon, styles.iconEdit)}
-            // onClick={this.edit}
+            onClick={openEdit}
           />
           <Icon
             type="star"
@@ -28,6 +29,11 @@ const OrgItem = ({ data={} }) => {
       </div>
     </Link>
   );
+};
+
+OrgItem.propTypes = {
+  data: PropTypes.object,
+  openEdit: PropTypes.func,
 };
 
 export default OrgItem;

@@ -1,7 +1,7 @@
 :root {
   --active-color: #3da8f5;
   --boder-color: #eee;
-  --title-color: rgba(0,0,0, .7);
+  --title-color: rgba(0,0,0,.7);
 }
 
 .title {
@@ -116,6 +116,4 @@
     color: gray;
     margin-bottom: 1.4rem;
   }
-
-
 }

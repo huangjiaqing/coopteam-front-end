@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import className from 'classnames';
 import styles from './index.css';
 import { Modal, Icon, Button, Input, Avatar } from 'antd';
@@ -20,6 +21,11 @@ const opts = [
 
 export default class ProjectSet extends Component {
 
+  static propTypes = {
+    visible: PropTypes.bool,
+    closeModal: PropTypes.func
+  }
+
   state = {
     tabFocus: 1
   }
@@ -29,16 +35,18 @@ export default class ProjectSet extends Component {
   }
 
   render() {
+    const { visible, closeModal } = this.props;
 
     return (
       <Modal
-        visible
+        visible={visible}
         width={800}
         title={<h2 className={styles.title}>项目设置</h2>}
         footer={null}
         bodyStyle={{ padding: 0 }}
+        onCancel={closeModal}
       >
-        <div className={styles.body}>
+        <div className={styles.body} onClick={e => e.stopPropagation()}>
           {this.renderLeft()}
           {this.renderRight()}
         </div>
