@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import className from 'classnames';
+import ProjectSet from 'components/projectSet';
 import styles from './index.css';
 import { Icon } from 'antd';
 
@@ -10,6 +11,17 @@ export default class ProjectMenu extends Component {
     isOpenMenu: PropTypes.bool.isRequired,
     bodyStyle: PropTypes.object,
     closeMenu: PropTypes.func
+  }
+
+  state = {
+    isShowProjectSet: false,
+  }
+
+  onShowProjectSet(e, isShow) {
+    e.stopPropagation();
+    this.setState({
+      isShowProjectSet: isShow
+    });
   }
 
   render() {
@@ -53,11 +65,19 @@ export default class ProjectMenu extends Component {
   }
 
   renderBody() {
+    const { isShowProjectSet } = this.state;
+
     return (
       <ul className={styles.body}>
-        <li className="can-click">
+        <li className="can-click" onClick={(e) => this.onShowProjectSet(e, true)}>
           <span><Icon type="setting" /></span>
           <span>项目设置</span>
+          {isShowProjectSet && (
+            <ProjectSet
+              visible={isShowProjectSet}
+              closeModal={(e) => this.onShowProjectSet(e, false)}
+            />
+          )}
         </li>
         <li className="can-click">
           <span><Icon type="tags-o" /></span>
