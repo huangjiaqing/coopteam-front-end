@@ -5,7 +5,7 @@ import ProjectMenu from 'components/projectMenu';
 import styles from './board.css';
 import Scrum from './Scrum';
 import Stage from './Stage';
-import Task from './Task';
+// import Task from './Task';
 
 export default class Board extends Component {
 

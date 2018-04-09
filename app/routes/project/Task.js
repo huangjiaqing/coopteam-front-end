@@ -16,7 +16,7 @@ export default function Task ({ data, openTaskDetail }) {
         <Icon type="minus-square-o" style={{ fontSize: 16, top: 2, position: 'relative' }}/>
         <section className={styles.taskInfo}>
           <h2 className={styles.content}>
-            {data.content}
+            {content}
           </h2>
         </section>
         <Avatar

@@ -7,7 +7,7 @@ import { Popover, Icon, Input } from 'antd';
 @PopoverClose
 export default class SelectProj extends Component {
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.props.closePopover();
   }
 

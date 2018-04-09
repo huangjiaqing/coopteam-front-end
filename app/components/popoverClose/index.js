@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 /**
  * 用于手动关闭antd的Popover
@@ -6,13 +6,13 @@ import React, { Component } from 'react';
  */
 export default function PopoverClose (Component) {
 
-  return class extends Component {
+  return class extends React.Component {
 
     state = {
       isShowSelf: true,
     }
 
-    closeSelf = (e) => {
+    closeSelf = () => {
       setTimeout(() => {
         this.setState({
           isShowSelf: false

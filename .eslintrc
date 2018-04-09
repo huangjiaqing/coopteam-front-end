@@ -18,7 +18,11 @@
       "react"
     ],
     "rules": {
-      "no-unused-vars": 0,
+      "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+      "no-unused-expressions": [0, {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }],
       "no-undef": 0,
       "no-console": 0,
       "indent": [
@@ -36,6 +40,8 @@
       "semi": [
         "error",
         "always"
-      ]
+      ],
+      "react/jsx-uses-vars": "error",
+      "react/jsx-uses-react": "error"
   }
 }

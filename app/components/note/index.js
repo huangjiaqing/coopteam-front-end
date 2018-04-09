@@ -22,13 +22,13 @@ export default class Note extends Component {
     });
   }
 
-  openNoteEditor = (e) => {
+  openNoteEditor = () => {
     this.setState({
       isOpenNoteEditor: true
     });
   }
 
-  closeNoteEditor = (e) => {
+  closeNoteEditor = () => {
     this.setState({
       isOpenNoteEditor: false
     });

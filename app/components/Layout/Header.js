@@ -27,7 +27,7 @@ class MySet extends Component {
     );
   }
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.props.closePopover();
   }
 
@@ -44,7 +44,7 @@ class MySet extends Component {
 @PopoverClose
 class Add extends Component {
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.props.closePopover();
   }
 

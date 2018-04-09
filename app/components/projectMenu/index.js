@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import className from 'classnames';
 import ProjectSet from 'components/projectSet';
 import styles from './index.css';
 import { Icon } from 'antd';
@@ -48,7 +47,7 @@ export default class ProjectMenu extends Component {
   }
 
   renderHeader() {
-    const { isOpenMenu, closeMenu } = this.props;
+    const { closeMenu } = this.props;
 
     return (
       <div className={styles.header}>

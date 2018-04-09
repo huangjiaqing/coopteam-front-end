@@ -58,7 +58,7 @@ export default class ProjectSet extends Component {
 
     return (
       <ul className={styles.left}>
-        {opts.map((item, idx) => {
+        {opts.map((item) => {
           return this.renderOpt(item);
         })}
       </ul>

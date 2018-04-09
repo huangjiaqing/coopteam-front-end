@@ -1,5 +1,5 @@
 import { observable, action, runInAction } from 'mobx';
-import { getProjects, getStages } from 'services/projectApi';
+import { getStages } from 'services/projectApi';
 
 export default new class ProjectStore {
 

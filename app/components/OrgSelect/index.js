@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
 import className from 'classnames';
-import { Popover, Icon, Input } from 'antd';
+import { Popover, Icon } from 'antd';
 
 export default class OrgSelect extends PureComponent {
 
