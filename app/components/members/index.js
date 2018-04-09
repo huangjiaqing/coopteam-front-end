@@ -1,44 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
+import PopoverClose from 'components/popoverClose';
 import { Popover, Input, Avatar, Icon } from 'antd';
 
+@PopoverClose
 export default class Members extends Component {
 
   static propTypes = {
     getValue: PropTypes.func
   }
 
-  state = {
-    visible: true
-  }
-
-  closeSelf() {
-    setTimeout(() => {
-      this.setState({
-        visible: false
-      }, () => {
-        this.setState({
-          visible: true
-        });
-      });
-    }, 100);
-  }
-
   _getValue(value) {
-    const { getValue } = this.props;
+    const { getValue, closePopover } = this.props;
     getValue && getValue(value);
-    this.closeSelf();
+    closePopover();
   }
 
   render() {
-    const { children } = this.props;
-    const { visible } = this.state;
-    const _visible = visible ? {} : {visible: false};
+    const { children, visible } = this.props;
 
     return (
       <Popover
-        {..._visible}
+        {...visible}
         trigger="click"
         placement="bottom"
         content={this.renderContent()}

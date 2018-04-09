@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
 import className from 'classnames';
+import PopoverClose from 'components/popoverClose';
 import { Popover, Icon } from 'antd';
 
+@PopoverClose
 export default class OrgSelect extends PureComponent {
 
   static propTypes = {
@@ -13,21 +15,10 @@ export default class OrgSelect extends PureComponent {
     children: PropTypes.any
   }
 
-  state = {
-    isShowSelf: true
-  }
-
-  closeSelf = (org) => {
-    setTimeout(() => {
-      this.props.getValue(org);
-      this.setState({
-        isShowSelf: false 
-      }, () => {
-        this.setState({
-          isShowSelf: true
-        });
-      });
-    }, 100);
+  _getValue(org) {
+    const { getValue, closePopover } = this.props;
+    getValue(org);
+    closePopover();
   }
 
   componentDidMount() {
@@ -36,9 +27,7 @@ export default class OrgSelect extends PureComponent {
   }
 
   render() {
-    const { data, children, selected } = this.props;
-    const { isShowSelf } = this.state;
-    const visible = isShowSelf ? {} : { visible: false };
+    const { data, children, selected, visible } = this.props;
 
     return (
       <Popover
@@ -51,7 +40,7 @@ export default class OrgSelect extends PureComponent {
               {data.map(item => {
                 return this.renderOrgItem({
                   data: item,
-                  onSelect: this.closeSelf,
+                  onSelect: (org) => this._getValue(org),
                   selected: selected === item.orgId
                 });
               })}

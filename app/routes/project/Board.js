@@ -5,7 +5,7 @@ import ProjectMenu from 'components/projectMenu';
 import styles from './board.css';
 import Scrum from './Scrum';
 import Stage from './Stage';
-// import Task from './Task';
+import Task from './Task';
 
 export default class Board extends Component {
 
@@ -40,12 +40,12 @@ export default class Board extends Component {
           {stages.map((item, idx) => (
             <Stage data={item} key={idx}/>
           ))}
-          {/* <Stage stageName="待处理">
+          <Stage stageName="待处理">
             <Task
               data={{ content: '北控清洁能源项目对接' }}
               openTaskDetail={this.openTaskDetail}
             />
-          </Stage> */}
+          </Stage>
           {/* <Stage stageName="进行中" />
           <Stage stageName="测试中" />
           <Stage stageName="已测试" />

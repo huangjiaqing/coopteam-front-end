@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import className from 'classnames';
 import Tag from 'components/tag';
+import PopoverClose from 'components/popoverClose';
 import { Input, Popover, Button, Icon } from 'antd';
 
 const colorMap = [
@@ -37,14 +38,14 @@ const colorMap = [
   }
 ];
 
+@PopoverClose
 export default class AddTag extends Component {
 
-  static propTypes = {
+  // static propTypes = {
     
-  }
+  // }
 
   state = {
-    isShowSelf: true,
     tabFocus: 'search',         // search | edit
   }
 
@@ -52,19 +53,8 @@ export default class AddTag extends Component {
     this.setState({tabFocus});
   }
 
-  closeSelf = () => {
-    setTimeout(() => {
-      this.setState({
-        isShowSelf: false
-      }, () => this.setState({
-        isShowSelf: true
-      }));
-    }, 100);
-  }
-
   render() {
-    const { isShowSelf } = this.state;
-    const visible = isShowSelf ? {} : { visible: false };
+    const { visible } = this.props;
 
     return (
       <Popover
@@ -127,7 +117,7 @@ export default class AddTag extends Component {
           <div className={styles.close} key={2}>
             <Icon
               type="close"
-              onClick={this.closeSelf}
+              onClick={this.props.closePopover}
             />
           </div>]}
       </div>

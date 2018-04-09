@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * 用于手动关闭antd的Popover
@@ -8,8 +9,14 @@ export default function PopoverClose (Component) {
 
   return class extends React.Component {
 
+    static propTypes = {
+      getValue: PropTypes.func,
+      tabFocus: PropTypes.number
+    }
+
     state = {
       isShowSelf: true,
+      tabFocus: 1,
     }
 
     closeSelf = () => {
@@ -24,13 +31,25 @@ export default function PopoverClose (Component) {
       }, 100);
     }
 
+    onTab = (tabFocus=1) => {
+      this.setState({tabFocus});
+    }
+
+    getValue = (value) => {
+      const { getValue } = this.props;
+      getValue && getValue(value);
+    }
+
     render() {
-      const { isShowSelf } = this.state;
+      const { isShowSelf, tabFocus } = this.state;
       const visible = isShowSelf ? {} : { visible: false };
 
       return (
         <Component
+          tabFocus={tabFocus}
           visible={visible}
+          onTab={this.onTab}
+          getValue={this.getValue}
           closePopover={this.closeSelf}
           {...this.props}
         />
