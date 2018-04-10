@@ -29,7 +29,7 @@ export default function PopoverClose (Component) {
           });
         });
       }, 100);
-    }
+    } 
 
     onTab = (tabFocus=1) => {
       this.setState({tabFocus});
