@@ -12,6 +12,9 @@ module.exports = webpackMerge(baseWebpackConfig, {
     port: '8888',
     historyApiFallback: true,
     hot: true,
+    proxy: {
+      '/api': 'http://localhost:4455'
+    },
   },
 
   devtool: 'cheap-module-eval-source-map',

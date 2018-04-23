@@ -4,6 +4,8 @@ import OrgItem from './OrgItem';
 import ProjectSet from 'components/projectSet';
 import { observer, inject } from 'mobx-react';
 
+import { _getOrgs } from 'services/orgApi';
+
 @inject('OrgStore')
 @observer
 export default class Org extends Component {
@@ -35,6 +37,10 @@ export default class Org extends Component {
       orgs: projects.filter(item => !item.isInBin),
       bin: projects.filter(item => item.isInBin),
     };
+  }
+
+  componentDidMount() {
+    _getOrgs();
   }
 
   render() {

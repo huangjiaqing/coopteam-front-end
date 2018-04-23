@@ -5,7 +5,7 @@ export default new class OrgStore {
 
   @observable orgs = [];
   @observable projects = [];
-  
+
   @action getOrgs = async () => {
     const res = await getOrgs();
     runInAction(() => {
@@ -19,5 +19,5 @@ export default new class OrgStore {
       this.projects = res.data;
     });
   }
-  
+
 };
